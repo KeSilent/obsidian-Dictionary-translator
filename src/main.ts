@@ -84,9 +84,14 @@ export default class DictionaryPlugin extends Plugin {
 		const content = saveData.content.map(c => `>${c.trim()}`).join("\n");
 		const radio = `\n![[${radioPath}]]`
 		const anchor = `\n^${hash}`
-		editor.setLine(appendPosition, title + content + (saveData.radio ? radio : "") + anchor)
 
-		editor.replaceSelection(`[[#^${hash}|${selection}]]`);
+    const filePath = this.settings.word_patch + "/" + selection.substring(0, 10)+ ".md"
+    this.app.vault.create(filePath,title + content + (saveData.radio ? radio : "") + anchor)
+    if(this.settings.word_patch){
+      editor.replaceSelection(`[[${this.settings.word_patch + "/" + selection.substring(0, 10)}|${selection}]]`);
+    }else{
+      editor.replaceSelection(`[[${selection.substring(0, 10)}|${selection}]]`);
+    }
 
 	}
 
@@ -98,7 +103,7 @@ export default class DictionaryPlugin extends Plugin {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, JSON.parse(this.decrypt(await this.loadData())));
 	}
 
-	private key: string = "saturn1&&saturn2"
+	private key = "saturn1&&saturn2"
 
 	private encrypt(param: string) {
 		const encrypted = CryptoJS.AES.encrypt(param, this.key, {

@@ -41,5 +41,7 @@
 	"file_exist": "无法创建文件夹，因为路径上存在一个文件: {{folderpath}}",
 	"save_radio_fail": "保存录音文件失败，请检查网络",
 	"stop_record": "停止录音",
-	"start_record": "开始录音"
+	"start_record": "开始录音",
+  "word_patch": "文件保存路径",
+  "word_patch_desc": "存放单词的文件夹。"
 }

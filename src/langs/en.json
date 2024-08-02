@@ -40,5 +40,7 @@
 	"file_exist": "The folder cannot be created because it already exists as a file: {{folderpath}}.",
 	"save_radio_fail": "Save radio failed,please check your network",
 	"stop_record": "Stop record",
-	"start_record": "Start record"
+	"start_record": "Start record",
+  "word_patch": "File saving path",
+  "word_patch_desc": "存放单词的文件夹。"
 }
